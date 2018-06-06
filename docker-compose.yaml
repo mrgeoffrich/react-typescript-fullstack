@@ -1,0 +1,10 @@
+version: "3.3"
+
+services:
+  rethink:
+    container_name: rethinkdb_store
+    image: rethinkdb
+    ports:
+      - "8080:8080"
+      - "28015:28015"
+      - "29015:29015"
