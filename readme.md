@@ -29,9 +29,12 @@ npm install yarn -g
 
 * Docker
 
-Docker is use to start the project's software dependencies.
+Docker is used to start the project's software dependencies.
 
-Install docker for mac or windows at: <https://www.docker.com/docker-mac> or <https://www.docker.com/docker-windows>
+Install docker for mac or windows at:
+
+* <https://www.docker.com/docker-mac>
+* <https://www.docker.com/docker-windows>
 
 ## Usage
 
