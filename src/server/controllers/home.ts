@@ -18,7 +18,7 @@ const renderFullPage = () => {
                 <meta charset="utf-8">
                 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
                 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
-                <title>HomeLab VM Builder</title>
+                <title>My App</title>
                 <body>
                     <script src='${isProdMode ? webpackManifest["vendors.js"] : "/vendors.bundle.js"}'></script>
                     <script src='${isProdMode ? webpackManifest["main.js"] : "/bundle.js"}'></script>
