@@ -27,11 +27,18 @@ To do this run
 npm install yarn -g
 ```
 
+* Docker
+
+Docker is use to start the project's software dependencies.
+
+Install docker for mac or windows at: <https://www.docker.com/docker-mac> or <https://www.docker.com/docker-windows>
+
 ## Usage
 
 To run in development mode run:
 
 ```bash
+docker-compose up
 yarn
 yarn run dev
 ```
@@ -39,6 +46,7 @@ yarn run dev
 To perform a production build run:
 
 ```bash
+docker-compose up
 yarn
 yarn run prod:build
 yarn run prod:run
