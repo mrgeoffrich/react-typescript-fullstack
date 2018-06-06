@@ -2,7 +2,7 @@
     "Rethinkdb": {
         "Host": "localhost",
         "Port": 28015,
-        "DbName": "homelabbuilder"
+        "DbName": "mydatabasename"
     },
     "Logfiles": {
         "AccessFilename": "access.log",

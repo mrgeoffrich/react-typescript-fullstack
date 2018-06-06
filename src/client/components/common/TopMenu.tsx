@@ -13,7 +13,7 @@ const TopMenuComponent: React.StatelessComponent<{}> = (props) => {
               src="/public/images/logo.png"
               style={{ marginRight: "1.5em" }}
             />
-            Homelab VMs
+            My App
           </Menu.Item>
           <Menu.Item><Link to="/">Home</Link></Menu.Item>
           <Menu.Item><Link to="/settings">Settings</Link></Menu.Item>
