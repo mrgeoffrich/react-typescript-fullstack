@@ -22,7 +22,7 @@
     "license": "MIT",
     "repository": {
         "type": "git",
-        "url": "https://gitlab.com/mrgeoffrich/homelab-vm-builder"
+        "url": "https://github.com/mrgeoffrich/react-typescript-fullstack"
     },
     "dependencies": {
         "axios": "^0.18.0",
