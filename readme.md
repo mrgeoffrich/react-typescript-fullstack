@@ -14,7 +14,6 @@ This starter kit provides a great out of the box starting point for developers w
 * NodeJS - <https://nodejs.org>
 * Yarn - <https://yarnpkg.com>
 * Semantic UI React - <https://react.semantic-ui.com/>
-* RethinkDB - <https://rethinkdb.com/>
 
 ## Pre-requisites
 
@@ -47,11 +46,15 @@ yarn
 yarn run dev
 ```
 
-To perform a production build run:
+To perform a production build:
 
 ```bash
-docker-compose up
 yarn
 yarn run prod:build
+```
+
+To run the production build:
+
+```bash
 yarn run prod:run
 ```
