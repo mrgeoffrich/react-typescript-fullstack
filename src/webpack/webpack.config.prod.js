@@ -1,15 +1,16 @@
 const path = require("path");
 const webpack = require("webpack");
 const ManifestPlugin = require('webpack-manifest-plugin');
+const paths = require('./paths');
 
 module.exports = {
     mode: "production",
     entry: [
         'babel-polyfill',
-        path.resolve(__dirname, "..", "client", "index.tsx")
+        paths.entryPointIndexTsx
     ],
     output: {
-        path: path.resolve(__dirname, '..', '..', 'build', "dist"),
+        path: paths.prodDistOutputFoler,
         publicPath: "/dist/",
         filename: "bundle.js"
     },
@@ -39,12 +40,9 @@ module.exports = {
                 exclude: /node_modules/,
                 use: [
                     {
-                        loader: "awesome-typescript-loader",
+                        loader: "ts-loader",
                         query: {
-                            useTranspileModule: true,
-                            useBabel: true,
-                            useCache: false,
-                            configFileName: path.resolve(__dirname, "..", "client", "tsconfig.json")
+                            configFile: paths.tsConfigFile,
                         },
                     }
                 ]
@@ -56,7 +54,7 @@ module.exports = {
             },
             {
                 test: /\.css$/,
-                include: /node_modules/,
+                include: [ paths.semanticUiCssFolder, paths.notusFolder ],
                 loaders: ["style-loader", "css-loader"],
             },
             {
@@ -69,19 +67,23 @@ module.exports = {
             },
             {
                 test: /\.eot(\?v=\d+\.\d+\.\d+)?$/,
-                loader: "file-loader"
+                loader: "file-loader",
+                include: [ paths.semanticUiCssFolder ]
             },
             {
                 test: /\.(woff|woff2)$/,
-                loader: "url-loader?prefix=font/&limit=5000"
+                loader: "url-loader?prefix=font/&limit=5000",
+                include: [ paths.semanticUiCssFolder ]
             },
             {
                 test: /\.ttf(\?v=\d+\.\d+\.\d+)?$/,
-                loader: "url-loader?limit=10000&mimetype=application/octet-stream"
+                loader: "url-loader?limit=10000&mimetype=application/octet-stream",
+                include: [ paths.semanticUiCssFolder ]
             },
             {
                 test: /\.svg(\?v=\d+\.\d+\.\d+)?$/,
-                loader: "url-loader?limit=10000&mimetype=image/svg+xml"
+                loader: "url-loader?limit=10000&mimetype=image/svg+xml",
+                include: [ paths.semanticUiCssFolder ]
             }
         ]
     }

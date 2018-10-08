@@ -35,14 +35,11 @@ function assignId(req: express.Request, res: express.Response, next: express.Nex
     next();
 }
 
-export function createApp(): express.Application {
+export function createApp(logfilePath: string): express.Application {
     const app: express.Application = express();
     const accessLogFilename: string = config.get("Logfiles.AccessFilename");
-    const logPath: string = path.join(__dirname, "..", "logs");
-    if (!fs.existsSync(logPath)) {
-        fs.mkdirSync(logPath);
-    }
-    const accessLogStream: fs.WriteStream = fs.createWriteStream(path.join(logPath, accessLogFilename), { flags: "a" });
+    const accessLogStream: fs.WriteStream = fs.createWriteStream(path.join(logfilePath, accessLogFilename),
+        { flags: "a" });
     if (isDevMode) {
         const compiler: webpack.ICompiler = webpack(webpackconfig as webpack.Configuration);
         app.use(webpackDevMiddleware(compiler, { publicPath: webpackconfig.output.publicPath }));

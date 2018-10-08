@@ -2,7 +2,6 @@
     "compilerOptions": {
         "sourceMap": true,
         "noImplicitAny": true,
-        "isolatedModules": true,
         "module": "commonjs",
         "lib": ["es6", "dom"],
         "target": "es6",

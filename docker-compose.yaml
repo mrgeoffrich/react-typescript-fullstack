@@ -1,10 +1,10 @@
 version: "3.3"
 
 services:
-  rethink:
-    container_name: rethinkdb_store
-    image: rethinkdb
+  postgres:
+    container_name: postgres
+    image: postgres
     ports:
-      - "8080:8080"
-      - "28015:28015"
-      - "29015:29015"
+      - "5432:5432"
+    environment:
+      POSTGRES_PASSWORD: devpostgrespwd

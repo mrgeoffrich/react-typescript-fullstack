@@ -6,6 +6,7 @@ This starter kit provides a great out of the box starting point for developers w
 
 * Typescript - <https://www.typescriptlang.org/>
 * Webpack 4 - <https://webpack.js.org/>
+* Express - <https://expressjs.com/>
 * React Hot Module Reload - <https://github.com/gaearon/react-hot-loader>
 * React 16 - <https://reactjs.org/>
 * React Router 4 - <https://reacttraining.com/react-router/>

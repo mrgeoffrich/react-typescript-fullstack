@@ -1,12 +1,39 @@
+import * as bunyan from "bunyan";
+import * as seq from "bunyan-seq";
 import * as config from "config";
+import * as fs from "fs";
 import * as http from "http";
 import { AddressInfo } from "net";
+import * as path from "path";
 import * as app from "./app";
-import { RethinkStore } from "./data/rethinkstore";
+import { Dependencies } from "./dependencyManager";
+
+// perhaps global settings for these - using config?
+process.env.NODE_TLS_REJECT_UNAUTHORIZED = "0";
 
 const port: number = +(process.env.PORT || config.get("Port") || "3000");
-const server: http.Server = http.createServer(app.createApp());
-const rethinkStore: RethinkStore = new RethinkStore();
+const logfilePath = path.join(__dirname, "..", "..", "logs");
+const configFilePath = path.join(__dirname, "..", "..", "config");
+if (!fs.existsSync(logfilePath)) {
+    fs.mkdirSync(logfilePath);
+}
+const firstRunFileExists = fs.existsSync(path.join(configFilePath, ".firstrun"));
+let firstRun = !firstRunFileExists;
+if (process.env.FIRSTRUN) {
+    firstRun = JSON.parse(process.env.FIRSTRUN) as boolean;
+}
+
+const logger = bunyan.createLogger({
+    name: "react-typescript-fullstack",
+    streams: [
+        {
+            level: "info",
+            path: path.join(logfilePath, "app.log")
+        },
+        seq.createStream({serverUrl: config.get("Logfiles.SeqUrl")})
+    ]
+});
+const server: http.Server = http.createServer(app.createApp(logfilePath));
 
 function onError(error: NodeJS.ErrnoException): void {
     if (error.syscall !== "listen") {
@@ -20,13 +47,11 @@ function onError(error: NodeJS.ErrnoException): void {
     // handle specific listen errors with friendly messages
     switch (error.code) {
         case "EACCES":
-            // tslint:disable-next-line:no-console
-            console.error(bind + " requires elevated privileges");
+            logger.error(bind + " requires elevated privileges");
             process.exit(1);
             break;
         case "EADDRINUSE":
-            // tslint:disable-next-line:no-console
-            console.error(bind + " is already in use");
+            logger.error(bind + " is already in use");
             process.exit(1);
             break;
         default:
@@ -38,24 +63,14 @@ function onListening(): void {
     const bind: string = typeof server.address() === "string"
         ? "pipe " + server.address()
         : "port " + (server.address() as AddressInfo).port;
-    // tslint:disable-next-line:no-console
-    console.log("Listening on " + bind);
+    logger.info("Listening on " + bind);
 }
 
-rethinkStore
-    .connect(
-        [
-            "table1",
-            "table2",
-            "table3"
-        ]
-    )
-    .then(() => {
-        server.listen(port);
-        server.on("error", onError);
-        server.on("listening", onListening);
-    })
-    .catch((err) => {
-        // tslint:disable-next-line:no-console
-        console.log(err);
-    });
+Dependencies().Initialise(server, logger, logfilePath, firstRun).then(() => {
+    server.listen(port);
+    server.on("error", onError);
+    server.on("listening", onListening);
+}).catch((err) => {
+    logger.error(err.message);
+    logger.error(JSON.stringify(err));
+});
