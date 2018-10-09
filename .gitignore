@@ -60,11 +60,10 @@ typings/
 
 .history
 
-.localStorage
-
 .DS_Store
 
 .awcache
 
 build
 src/server/vmwarelibs/**/*
+.cache-loader

@@ -1,5 +1,4 @@
 import * as bunyan from "bunyan";
-import * as seq from "bunyan-seq";
 import * as config from "config";
 import * as fs from "fs";
 import * as http from "http";
@@ -28,8 +27,7 @@ const logger = bunyan.createLogger({
         {
             level: "info",
             path: path.join(logfilePath, "app.log")
-        },
-        seq.createStream({serverUrl: config.get("Logfiles.SeqUrl")})
+        }
     ]
 });
 const server: http.Server = http.createServer(app.createApp(logfilePath));

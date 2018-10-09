@@ -1,9 +1,4 @@
 {
-    "Rethinkdb": {
-        "Host": "localhost",
-        "Port": 28015,
-        "DbName": "mydatabasename"
-    },
     "Logfiles": {
         "AccessFilename": "access.log",
         "AccessLogFormat": "[:date[clf]] :id :status :method :url :response-time"
