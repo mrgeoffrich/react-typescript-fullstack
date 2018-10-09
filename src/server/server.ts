@@ -3,7 +3,6 @@ import * as seq from "bunyan-seq";
 import * as config from "config";
 import * as fs from "fs";
 import * as http from "http";
-import { AddressInfo } from "net";
 import * as path from "path";
 import * as app from "./app";
 import { Dependencies } from "./dependencyManager";

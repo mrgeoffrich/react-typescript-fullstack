@@ -18,7 +18,7 @@
             "name": "Launch Dev",
             "protocol": "inspector",
             "sourceMaps": true,
-            "preLaunchTask": "devdeps",
+            "preLaunchTask": "dev:build",
             "program": "${workspaceFolder}/build/server/server.js",
             "outFiles": [
                 "${workspaceFolder}/build/**/*"

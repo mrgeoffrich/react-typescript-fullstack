@@ -1,23 +1,9 @@
 {
-    "version": "0.1.0",
-    "command": "npm",
-    "isShellCommand": true,
-    "showOutput": "always",
-    "suppressTaskName": true,
+    "version": "2.0.0",
+    "command": "yarn",
     "tasks": [
         {
-            "taskName": "devdeps",
-            "args": [
-                "run",
-                "build"
-            ]
-        },
-        {
-            "taskName": "watch",
-            "args": [
-                "run",
-                "watch"
-            ]
+            "label": "dev:build"
         }
     ]
 }
