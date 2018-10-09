@@ -1,7 +1,6 @@
 import * as React from "react";
-import { Provider } from "react-redux";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
-import { App } from "./App";
+import { App } from "./app";
 import { LandingPage } from "./components/landing/LandingPage";
 import { SettingsPage } from "./components/settings/SettingsPage";
 import { StatusPage } from "./components/status/StatusPage";
