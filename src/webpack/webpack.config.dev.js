@@ -77,7 +77,7 @@ module.exports = {
             {
                 test: /\.css$/,
                 loaders: ["style-loader", "css-loader"],
-                include: [ paths.semanticUiCssFolder, paths.notusFolder ]
+                include: [ paths.semanticUiCssFolder ]
             },
             {
                 test: /\.(jpe?g|gif|png|svg)$/i,

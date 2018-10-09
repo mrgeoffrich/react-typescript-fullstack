@@ -54,7 +54,7 @@ module.exports = {
             },
             {
                 test: /\.css$/,
-                include: [ paths.semanticUiCssFolder, paths.notusFolder ],
+                include: [ paths.semanticUiCssFolder ],
                 loaders: ["style-loader", "css-loader"],
             },
             {

@@ -7,7 +7,6 @@ const commonFolder = path.join(sourceFolder, "common")
 const tsConfigFile = path.join(clientFolder, "tsconfig.json")
 const entryPointIndexTsx = path.join(clientFolder, "index.tsx")
 const semanticUiCssFolder = path.join(rootFolder, "node_modules", "semantic-ui-css")
-const notusFolder = path.join(rootFolder, "node_modules", "notus")
 const prodDistOutputFoler = path.join(rootFolder, 'build','dist')
 
 module.exports = {
@@ -18,6 +17,5 @@ module.exports = {
     tsConfigFile,
     entryPointIndexTsx,
     semanticUiCssFolder,
-    notusFolder,
     prodDistOutputFoler
 }
