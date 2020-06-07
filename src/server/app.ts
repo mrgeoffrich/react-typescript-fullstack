@@ -10,7 +10,6 @@ import * as uuid from "uuid";
 import * as webpack from "webpack";
 import * as webpackDevMiddleware from "webpack-dev-middleware";
 import * as webpackHotMiddleware from "webpack-hot-middleware";
-import * as webpackconfig from "../webpack/webpack.config.dev.js";
 import { registerRoutes } from "./controllers/index";
 
 const isDevMode: boolean = process.env.NODE_ENV === "development" || false;
@@ -35,20 +34,22 @@ function assignId(req: express.Request, res: express.Response, next: express.Nex
     next();
 }
 
-export function createApp(logfilePath: string): express.Application {
+export function createApp(logfilePath: string, logger: any): express.Application {
     const app: express.Application = express();
     const accessLogFilename: string = config.get("Logfiles.AccessFilename");
     const accessLogStream: fs.WriteStream = fs.createWriteStream(path.join(logfilePath, accessLogFilename),
         { flags: "a" });
     if (isDevMode) {
-        const compiler: webpack.ICompiler = webpack(webpackconfig as webpack.Configuration);
-        app.use(webpackDevMiddleware(compiler, { publicPath: webpackconfig.output.publicPath }));
+        logger.info("Starting application in development mode.")
+        const compiler: webpack.ICompiler = webpack(require( "../webpack/webpack.config.dev.js") as webpack.Configuration);
+        app.use(webpackDevMiddleware(compiler, { publicPath: require( "../webpack/webpack.config.dev.js").output.publicPath }));
         app.use(webpackHotMiddleware(compiler));
     }
     app.use(assignId);
     app.use(morgan(config.get("Logfiles.AccessLogFormat"), { stream: accessLogStream }));
     app.use("/public", express.static(path.join(__dirname, "..", "..", "public")));
     if (isProdMode) {
+        logger.info("Starting application in production mode.")
         app.use("/dist", express.static(path.join(__dirname, "..", "dist")));
     }
     app.use(favicon(path.join(__dirname, "..", "..", "public", "favicon.ico")));

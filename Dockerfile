@@ -1,18 +1,15 @@
-FROM node:8.12-alpine as build
+FROM node:lts-alpine as build
 
 WORKDIR /workspace
 
 COPY ./ ./
 
-RUN npm install -g yarn
 RUN yarn install
 RUN yarn run prod:build
 
-FROM node:8.12-alpine
+FROM node:lts-alpine
 
 WORKDIR /workspace
-
-RUN npm install -g yarn
 
 COPY --from=build /workspace/package.json ./
 COPY --from=build /workspace/yarn.lock ./

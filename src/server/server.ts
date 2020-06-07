@@ -25,12 +25,16 @@ const logger = bunyan.createLogger({
     name: "react-typescript-fullstack",
     streams: [
         {
+            level: 'info',
+            stream: process.stdout
+        },
+        {
             level: "info",
             path: path.join(logfilePath, "app.log")
         }
     ]
 });
-const server: http.Server = http.createServer(app.createApp(logfilePath));
+const server: http.Server = http.createServer(app.createApp(logfilePath, logger));
 
 function onError(error: NodeJS.ErrnoException): void {
     if (error.syscall !== "listen") {

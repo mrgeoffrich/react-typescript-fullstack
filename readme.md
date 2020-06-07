@@ -6,18 +6,18 @@
 
 This starter kit provides a great out of the box starting point for developers who are looking to develop a website in Typescript using the following technologies:
 
-* Typescript 3 - <https://www.typescriptlang.org/>
-* Webpack 4 - <https://webpack.js.org/>
-* Express - <https://expressjs.com/>
-* React Hot Module Reload - <https://github.com/gaearon/react-hot-loader>
-* React 16 - <https://reactjs.org/>
-* React Router 4 - <https://reacttraining.com/react-router/>
-* NodeJS 8 LTS - <https://nodejs.org>
-* Yarn - <https://yarnpkg.com>
-* Semantic UI React - <https://react.semantic-ui.com/>
-* Docker - <https://www.docker.com/>
-* Visual Studio Code - <https://code.visualstudio.com/>
-* Circle CI Builds - <https://circleci.com>
+-   Typescript 3 - <https://www.typescriptlang.org/>
+-   Webpack 4 - <https://webpack.js.org/>
+-   Express - <https://expressjs.com/>
+-   React Hot Module Reload - <https://github.com/gaearon/react-hot-loader>
+-   React 16 - <https://reactjs.org/>
+-   React Router 5 - <https://reacttraining.com/react-router/>
+-   NodeJS 12 LTS - <https://nodejs.org>
+-   Yarn - <https://yarnpkg.com>
+-   Semantic UI React - <https://react.semantic-ui.com/>
+-   Docker - <https://www.docker.com/>
+-   Visual Studio Code - <https://code.visualstudio.com/>
+-   Circle CI Builds - <https://circleci.com>
 
 ## Pre-requisites
 
