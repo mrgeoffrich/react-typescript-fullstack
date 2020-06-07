@@ -1,11 +1,9 @@
 version: 2
 jobs:
   build:
-    docker:
-      - image: docker:18.06.1-ce-git
+    machine: true
     steps:
       - checkout
-      - setup_remote_docker
       - run:
           name: Build application Docker image
           command: |
@@ -14,7 +12,7 @@ jobs:
           name: Push application Docker image
           command: |
             if [ "${CIRCLE_BRANCH}" == "master" ]; then
-              docker login -u $DOCKER_USER -p $DOCKER_PASS
+              echo $DOCKER_PASS | docker login -u $DOCKER_USER --password-stdin
               docker tag $CIRCLE_PROJECT_REPONAME "${CIRCLE_PROJECT_USERNAME}/${CIRCLE_PROJECT_REPONAME}:${CIRCLE_BUILD_NUM}"
               docker tag $CIRCLE_PROJECT_REPONAME "${CIRCLE_PROJECT_USERNAME}/${CIRCLE_PROJECT_REPONAME}:latest"
               docker push "${CIRCLE_PROJECT_USERNAME}/${CIRCLE_PROJECT_REPONAME}:latest"
