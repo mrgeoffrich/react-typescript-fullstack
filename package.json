@@ -27,7 +27,7 @@
         "url": "https://github.com/mrgeoffrich/react-typescript-fullstack"
     },
     "dependencies": {
-        "axios": "^0.19.2",
+        "axios": "^0.21.1",
         "body-parser": "^1.18.2",
         "btoa": "^1.2.1",
         "bunyan": "^1.8.12",
