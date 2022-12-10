@@ -36,7 +36,7 @@
         "config": "^3.3.1",
         "cross-env": "^7.0.2",
         "dockerode": "^3.2.0",
-        "express": "^4.16.3",
+        "express": "^4.17.3",
         "fork-ts-checker-notifier-webpack-plugin": "^2.0.0",
         "fork-ts-checker-webpack-plugin": "^4.1.6",
         "glob": "^7.1.2",
